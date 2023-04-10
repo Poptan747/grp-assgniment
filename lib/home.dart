@@ -8,6 +8,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+bool animate = false;
+
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -15,10 +17,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Color(0x0ffffffff),
         centerTitle: true,
-        title: (Text('text',style: TextStyle(color: Colors.black))),
+        title: (Text('Cincai lah~',
+            style: TextStyle(color: Colors.black,fontFamily: 'DancingScript', fontSize: 40),
+        )),
         leading: Icon(Icons.menu_book, color: Color(0xfff55951)),
         actions: [
-          Icon(Icons.storefront, color: Color(0xfff55951))
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: Icon(Icons.storefront, color: Color(0xfff55951)),
+          )
         ],
       ),
       backgroundColor: Color(0x0ffffffff),
@@ -35,10 +42,17 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 40),
             AvatarGlow(
               endRadius: 200,
-              animate: true,
+              animate: animate,
               glowColor: Colors.redAccent,
               child: GestureDetector(
-                onTap: ()=> print('tapped'),
+                behavior: HitTestBehavior.opaque,
+
+                onTap: ()=> this.setState(() {
+                  if (animate == false){
+                    animate = true;
+                  }
+                  print('tapped $animate');
+                }),
                 child: Material(
                   shape: CircleBorder(),
                   elevation: 8,
@@ -58,5 +72,15 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+}
+
+bool glow(bool temp){
+  if (temp == false){
+    return true;
+  }else if(temp == true){
+    return false;
+  }else{
+    return false;
   }
 }
