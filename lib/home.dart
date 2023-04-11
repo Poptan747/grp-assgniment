@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:avatar_glow/avatar_glow.dart';
+import 'store.dart';
+import 'package:getwidget/getwidget.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,8 +29,15 @@ class _HomePageState extends State<HomePage> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: Icon(Icons.storefront, color: Color(0xfff55951)),
+            child:IconButton(onPressed: (){
+
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=>Chart()),
+              );
+          },
+            icon:Icon(Icons.storefront, color: Color(0xfff55951)),
           )
+          ),
         ],
       ),
       backgroundColor: Color(0x0ffffffff),
