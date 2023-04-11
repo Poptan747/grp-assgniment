@@ -8,7 +8,9 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-bool animate = false;
+bool _animate = false;
+bool _visible = false;
+String _msg ="Collecting nearby location~";
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -42,16 +44,15 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 40),
             AvatarGlow(
               endRadius: 200,
-              animate: animate,
+              animate: _animate,
               glowColor: Colors.redAccent,
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
-
                 onTap: ()=> this.setState(() {
-                  if (animate == false){
-                    animate = true;
+                  if (_animate == false){
+                    _animate = true;
+                    chgMessage();
                   }
-                  print('tapped $animate');
                 }),
                 child: Material(
                   shape: CircleBorder(),
@@ -63,24 +64,39 @@ class _HomePageState extends State<HomePage> {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle, color: Color(0xfff55951)
                     ),
-                    child: Icon(Icons.local_dining,size: 80,),
+                    child: Icon(Icons.local_dining,size: 80, color: Colors.white),
                   ),
                 ),
               ),
-            )
+            ),
+            SizedBox(height: 20,),
+            AnimatedOpacity(
+              opacity: _visible ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 700),
+              child: Text(_msg,
+                style: TextStyle(color: Colors.black, fontSize: 15),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-}
-
-bool glow(bool temp){
-  if (temp == false){
-    return true;
-  }else if(temp == true){
-    return false;
-  }else{
-    return false;
+  void chgMessage(){
+    setState(() {
+      _visible = !_visible;
+      Future.delayed(Duration(seconds: 6), (){
+        setState(() {
+          _msg = "Collection completed!";
+        });
+      });
+      Future.delayed(Duration(seconds: 9), (){
+        setState(() {
+          _msg = "Choosing one for you~";
+        });
+      });
+    });
   }
 }
+
+
