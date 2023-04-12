@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:coverflow/coverflow.dart';
+//import 'package:carousel_slider/carousel_slider.dart';
+//import 'package:coverflow/coverflow.dart';
 
 List<String> imageList = [
   "https://img.freepik.com/free-photo/chicken-wings-barbecue-sweetly-sour-sauce-picnic-summer-menu-tasty-food-top-view-flat-lay_2829-6471.jpg",
@@ -13,16 +13,14 @@ List<String> imageList = [
 ];
 
 List <String> imageItem = [
-
-  "https://upload.wikimedia.org/wikipedia/commons/6/62/Barbieri_-_ViaSophia25668.jpg"
-  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&w=1000&q=80"
-  "https://assets.bonappetit.com/photos/610aa6ddc50e2f9f7c42f7f8/16:9/w_2560%2Cc_limit/Savage-2019-top-50-busy-restaurant.jpg"
-  "https://blog.koelntourismus.de/wp-content/uploads/2019/12/Header.jpg"
-  "https://nhahangso.cdn.vccloud.vn/wp-content/uploads/2022/09/muc-tieu-cua-mcdonalds.webp"
-  "https://imageio.forbes.com/specials-images/imageserve/5ebb512b9144ca0006f205b1/A-Subway-restaurant/960x0.jpg?format=jpg&width=960"
-  "https://i.pinimg.com/originals/3a/7d/8f/3a7d8f351db0067d0691da7468998ef3.jpg"
-  "https://lh5.ggpht.com/7Ew4YHx5_3XTWi0fTQijnrezSFAEEd3IeR9xZsp-7TBL6KjGAan6r_xmHWogYiMUF-Q4sP3JZeJh458IFh_NAeQ7=s800"
-
+  "https://upload.wikimedia.org/wikipedia/commons/6/62/Barbieri_-_ViaSophia25668.jpg",
+  "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&w=1000&q=80",
+  "https://assets.bonappetit.com/photos/610aa6ddc50e2f9f7c42f7f8/16:9/w_2560%2Cc_limit/Savage-2019-top-50-busy-restaurant.jpg",
+  "https://blog.koelntourismus.de/wp-content/uploads/2019/12/Header.jpg",
+  "https://nhahangso.cdn.vccloud.vn/wp-content/uploads/2022/09/muc-tieu-cua-mcdonalds.webp",
+  "https://imageio.forbes.com/specials-images/imageserve/5ebb512b9144ca0006f205b1/A-Subway-restaurant/960x0.jpg?format=jpg&width=960",
+  "https://i.pinimg.com/originals/3a/7d/8f/3a7d8f351db0067d0691da7468998ef3.jpg",
+  "https://lh5.ggpht.com/7Ew4YHx5_3XTWi0fTQijnrezSFAEEd3IeR9xZsp-7TBL6KjGAan6r_xmHWogYiMUF-Q4sP3JZeJh458IFh_NAeQ7=s800",
 ];
 
 class Chart extends StatelessWidget {
