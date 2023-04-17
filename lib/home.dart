@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
       });
       Future.delayed(Duration(seconds: 9), (){
         setState(() {
-          _msg = "Choosing one for you~";
+          _msg = "Choosing one for you~   ";
         });
       });
       Future.delayed(Duration(seconds: 12), (){
