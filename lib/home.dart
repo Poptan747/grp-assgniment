@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'store.dart';
-import 'package:getwidget/getwidget.dart';
+import 'restaurantDetail.dart';
+import 'history.dart';	
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -19,13 +21,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Color(0x0ffffffff),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         centerTitle: true,
         title: (Text('Cincai lah~',
             style: TextStyle(color: Colors.black,fontFamily: 'DancingScript', fontSize: 40),
         )),
-        leading: Icon(Icons.menu_book, color: Color(0xfff55951)),
+        leading: InkWell(
+            onTap: (){
+              Navigator.push(context,  MaterialPageRoute(builder: (context) => const HistoryPage()),
+              );
+            },
+            child: const Icon(Icons.menu_book, color: Color(0xfff55951))),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
@@ -58,12 +67,7 @@ class _HomePageState extends State<HomePage> {
               glowColor: Colors.redAccent,
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onTap: ()=> this.setState(() {
-                  if (_animate == false){
-                    _animate = true;
-                    chgMessage();
-                  }
-                }),
+                onTap: ()=> chgMessage(),
                 child: Material(
                   shape: CircleBorder(),
                   elevation: 8,
@@ -79,12 +83,20 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(height: 20,),
             AnimatedOpacity(
               opacity: _visible ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 700),
-              child: Text(_msg,
-                style: TextStyle(color: Colors.black, fontSize: 15),
+              child: SizedBox(
+                height: 28,
+                child: AnimatedTextKit(
+                  pause: Duration(seconds: 1),
+                  repeatForever: true,
+                  animatedTexts: [
+                    ScaleAnimatedText(_msg, textStyle: TextStyle(fontSize: 20, color: Colors.black)),
+                    ScaleAnimatedText(_msg, textStyle: TextStyle(fontSize: 20, color: Colors.black)),
+                    ScaleAnimatedText(_msg, textStyle: TextStyle(fontSize: 20, color: Colors.black))
+                  ],
+                )
               ),
             ),
           ],
@@ -95,6 +107,11 @@ class _HomePageState extends State<HomePage> {
   void chgMessage(){
     setState(() {
       _visible = !_visible;
+
+      if (_animate == false){
+        _animate = true;
+      }
+
       Future.delayed(Duration(seconds: 6), (){
         setState(() {
           _msg = "Collection completed!";
@@ -102,9 +119,20 @@ class _HomePageState extends State<HomePage> {
       });
       Future.delayed(Duration(seconds: 9), (){
         setState(() {
-          _msg = "Choosing one for you~";
+          _msg = "Choosing one for you~  ";
         });
       });
+      Future.delayed(Duration(seconds: 12), (){
+        setState(() {
+          _animate = false;
+          _visible = !_visible;
+          _msg ="Collecting nearby location~";
+          Navigator.push(context,
+            MaterialPageRoute(builder: (context)=>RestaurantDetailPage()),
+          );
+        });
+      });
+
     });
   }
 }

@@ -18,7 +18,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Introduction screen',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(primarySwatch: Colors.red),
       home: const OnBoardingPage(),
     );
   }
@@ -40,15 +40,15 @@ class OnBoardingPageState extends State<OnBoardingPage> {
     );
   }
 
-  Widget _buildFullscreenImage() {
-    return Image.asset(
-      'assets/food1.jpg',
-      fit: BoxFit.cover,
-      height: double.infinity,
-      width: double.infinity,
-      alignment: Alignment.center,
-    );
-  }
+  // Widget _buildFullscreenImage() {
+  //   return Image.asset(
+  //     'assets/intro4.png',
+  //     fit: BoxFit.cover,
+  //     height: double.infinity,
+  //     width: double.infinity,
+  //     alignment: Alignment.center,
+  //   );
+  // }
 
   Widget _buildImage(String assetName, [double width = 350]) {
     return Image.asset('assets/$assetName', width: width);
@@ -71,15 +71,15 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       globalBackgroundColor: Colors.white,
       allowImplicitScrolling: true,
       autoScrollDuration: 3000,
-      globalHeader: Align(
-        alignment: Alignment.topRight,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 16, right: 16),
-            child: _buildImage('flutter.png', 100),
-          ),
-        ),
-      ),
+      // globalHeader: Align(
+      //   alignment: Alignment.topRight,
+      //   child: SafeArea(
+      //     child: Padding(
+      //       padding: const EdgeInsets.only(top: 16, right: 16),
+      //       child: _buildImage('flutter.png', 100),
+      //     ),
+      //   ),
+      // ),
       globalFooter: SizedBox(
         width: double.infinity,
         height: 60,
@@ -93,7 +93,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
       ),
       pages: [
         PageViewModel(
-          title: "We help you to decide",
+          title: "What should I eat today?",
           body:
           "Do you worry about what to eat every day?",
           decoration: pageDecoration.copyWith(
@@ -103,14 +103,14 @@ class OnBoardingPageState extends State<OnBoardingPage> {
             bodyAlignment: Alignment.bottomCenter,
             imageAlignment: Alignment.topCenter,
           ),
-          image: _buildImage('img1.jpg'),
+          image: _buildImage('intro1.png'),
           reverse: true,
         ),
         PageViewModel(
-          title: "We help you to decide",
+          title: "We help you to decide!",
           body:
-          "Do you worry about where to eat every day?",
-          image: _buildImage('img2.jpg'),
+          "A single tap in the app and we choose it for you!",
+          image: _buildImage('intro2.png'),
           decoration: pageDecoration.copyWith(
             imageFlex: 2,
           ),
@@ -118,19 +118,24 @@ class OnBoardingPageState extends State<OnBoardingPage> {
         PageViewModel(
           title: "",
           body:
-          "We are here to try to help you to decide your breakfast, lunch, and dinner. Ofc also other meal times",
-          image: _buildImage('img3.jpg'),
+          "We are here to help you decide your daily meals.",
+          image: _buildImage('intro3.png'),
           decoration: pageDecoration.copyWith(
             imageFlex: 2,
           ),
         ),
         PageViewModel(
-          title: "Ofc you may also try other without our results~",
-          body: "this is just a suggestion for you",
-          image: _buildFullscreenImage(),
+          title: "Don't like the suggestion?",
+          body:"Just tap again until one will satisfy you.",
           decoration: pageDecoration.copyWith(
-            fullScreen: true,
-          )
+            titlePadding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+            bodyFlex: 2,
+            imageFlex: 4,
+            bodyAlignment: Alignment.bottomCenter,
+            imageAlignment: Alignment.topCenter,
+          ),
+          image: _buildImage('intro4.png'),
+          reverse: true,
         ),
       ],
       onDone: () => _onIntroEnd(context),
