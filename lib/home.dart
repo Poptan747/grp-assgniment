@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'store.dart';
 import 'restaurantDetail.dart';
+import 'history.dart';	
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 
@@ -28,7 +29,12 @@ class _HomePageState extends State<HomePage> {
         title: (Text('Cincai lah~',
             style: TextStyle(color: Colors.black,fontFamily: 'DancingScript', fontSize: 40),
         )),
-        leading: Icon(Icons.menu_book, color: Color(0xfff55951)),
+        leading: InkWell(
+            onTap: (){
+              Navigator.push(context,  MaterialPageRoute(builder: (context) => const HistoryPage()),
+              );
+            },
+            child: const Icon(Icons.menu_book, color: Color(0xfff55951))),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),

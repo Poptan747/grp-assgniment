@@ -5,7 +5,7 @@ import 'package:getwidget/getwidget.dart';
 //import 'package:carousel_slider/carousel_slider.dart';
 //import 'package:coverflow/coverflow.dart';
 
-List <String> imageList = [
+List<String> imageList = [
   'images/chart1.jpg',
   'images/chart2.jpg',
   'images/chart3.jpg',
@@ -13,8 +13,7 @@ List <String> imageList = [
   'images/chart5.jpg',
 ];
 
-List <Map<String,dynamic>> imageItem = [
-
+List<Map<String, dynamic>> imageItem = [
   {'path': 'images/restaurant/restaurant1.jpg', 'text': 'TOAST'},
   {'path': 'images/restaurant/restaurant2.jpg', 'text': 'SUBWAY'},
   {'path': 'images/restaurant/restaurant3.jpg', 'text': 'NEWYORK BISTRO'},
@@ -23,16 +22,16 @@ List <Map<String,dynamic>> imageItem = [
   {'path': 'images/restaurant/restaurant6.jpg', 'text': 'WOODEN REST'},
   {'path': 'images/restaurant/restaurant7.jpg', 'text': 'FIRE WOOD'},
   {'path': 'images/restaurant/restaurant8.jpg', 'text': 'KOREA STYLE'},
-
 ];
 
 class Chart extends StatelessWidget {
-  const Chart ({Key? key}) : super(key: key);
+  const Chart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GroupProject',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -55,117 +54,108 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(
         title: Text("Charts"),
         centerTitle: true,
-        leading:
-        IconButton(onPressed: (){
-          Navigator.push(context,
-            MaterialPageRoute(builder: (context)=>HomePage()),
-          );
-        },
-            icon:Icon(Icons.arrow_back_rounded)
-
-        ),
-
+        leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
+            },
+            icon: Icon(Icons.arrow_back_rounded)),
       ),
-
       body: Container(
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GFCarousel(
-                items: imageList.map(
-                      (image) {
-                    return Container(
-                      margin: EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                        child: Image.asset(
-                            image,
-                            fit: BoxFit.cover,
-                            width: 1000.0
-                        ),
-                      ),
-                    );
-                  },
-                ).toList(),
-                onPageChanged: (index) {
-                  setState(() {
-                    index;
-                  });
-                },
-              ),
-
-              Padding(padding: EdgeInsets.only(left:15, bottom:5, right: 20, top:35),
-                child:Text('Most Popular Restaurant >>>',
-                  style: TextStyle(color: Colors.purple, fontSize: 15, fontWeight: FontWeight.bold,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          GFCarousel(
+            items: imageList.map(
+              (image) {
+                return Container(
+                  margin: EdgeInsets.all(8.0),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    child: Image.asset(image, fit: BoxFit.cover, width: 1000.0),
                   ),
-                ),
+                );
+              },
+            ).toList(),
+            onPageChanged: (index) {
+              setState(() {
+                index;
+              });
+            },
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 15, bottom: 5, right: 20, top: 35),
+            child: Text(
+              'Most Popular Restaurant >>>',
+              style: TextStyle(
+                color: Colors.purple,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
               ),
-
-              GFItemsCarousel(
-                rowCount: 3,
-                children: imageItem.map(
-                      (item) {
-                    return Column(
-                        children:[
-                          Container(
-                            margin: EdgeInsets.all(5.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                              child:
-                              Image.asset(item['path'], fit: BoxFit.cover, height: 175),
-
-                            ),
-                          ),
-                          Text(
-                            item['text'],
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ]
-                    );
-                  },
-                ).toList(),
-              ),
-
-              Padding(padding: EdgeInsets.only(left:15, bottom:5, right: 20, top:35),
-                child:Text('Others Restaurant >>>',
-                  style: TextStyle(color: Colors.purple, fontSize: 15, fontWeight: FontWeight.bold,
+            ),
+          ),
+          GFItemsCarousel(
+            rowCount: 3,
+            children: imageItem.map(
+              (item) {
+                return Column(children: [
+                  Container(
+                    margin: EdgeInsets.all(5.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                      child: Image.asset(item['path'],
+                          fit: BoxFit.cover, height: 175),
+                    ),
                   ),
-                ),
+                  Text(
+                    item['text'],
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ]);
+              },
+            ).toList(),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 15, bottom: 5, right: 20, top: 35),
+            child: Text(
+              'Others Restaurant >>>',
+              style: TextStyle(
+                color: Colors.purple,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
               ),
-              GFItemsCarousel(
-                rowCount: 3,
-                children: imageItem.map(
-                      (item) {
-                    return Column(
-                        children:[
-                          Container(
-                            margin: EdgeInsets.all(5.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                              child:
-                              Image.asset(item['path'], fit: BoxFit.cover, height: 175),
-
-                            ),
-                          ),
-                          Text(
-                            item['text'],
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ]
-                    );
-                  },
-                ).toList(),
-              ),
-            ]
-        ),
+            ),
+          ),
+          GFItemsCarousel(
+            rowCount: 3,
+            children: imageItem.map(
+              (item) {
+                return Column(children: [
+                  Container(
+                    margin: EdgeInsets.all(5.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                      child: Image.asset(item['path'],
+                          fit: BoxFit.cover, height: 175),
+                    ),
+                  ),
+                  Text(
+                    item['text'],
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ]);
+              },
+            ).toList(),
+          ),
+        ]),
       ),
     );
   }
