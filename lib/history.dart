@@ -110,29 +110,33 @@ class HistoryPage extends StatelessWidget {
       ),
     );
   }
-  Widget _buildImageContainer(BuildContext context, String imagePath, String title) {
+   Widget _buildImageContainer(BuildContext context, String imagePath, String title) {
+    double containerHeight = MediaQuery.of(context).size.height * 0.3; // Set the height to 30% of the screen height
     return Expanded(
-      child: Container(
-        height: 270,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(imagePath),
-            fit: BoxFit.cover,
-          ),
-          borderRadius: BorderRadius.circular(10),
-        ),
+      child: FractionallySizedBox(
+        widthFactor: 0.9, // Set the width to 90% of the available width
         child: Container(
+          height: containerHeight,
           decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(imagePath),
+              fit: BoxFit.cover,
+            ),
             borderRadius: BorderRadius.circular(10),
-            color: Colors.black54,
           ),
-          child: Center(
-            child: Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.black54,
+            ),
+            child: Center(
+              child: Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
