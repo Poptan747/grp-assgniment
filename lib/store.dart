@@ -15,7 +15,7 @@ List <String> imageList = [
 
 List <Map<String,dynamic>> imageItem = [
 
-  {'path': 'images/restaurant/restaurant1.jpg', 'text': 'TOAST'},
+  {'path': 'images/restaurant/restaurant1.jpg', 'text': 'TOAST', 'pages':HomePage()},
   {'path': 'images/restaurant/restaurant2.jpg', 'text': 'SUBWAY'},
   {'path': 'images/restaurant/restaurant3.jpg', 'text': 'NEWYORK BISTRO'},
   {'path': 'images/restaurant/restaurant4.jpg', 'text': 'MCDONALDS'},
@@ -109,11 +109,19 @@ class _MyAppState extends State<MyApp> {
                         children:[
                           Container(
                             margin: EdgeInsets.all(5.0),
+
                             child: ClipRRect(
                               borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                              child:
+                        child: GestureDetector(
+                        child:
                               Image.asset(item['path'], fit: BoxFit.cover, height: 175),
-
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => item['pages']));
+                          },
+                        ),
                             ),
                           ),
                           Text(
@@ -124,6 +132,7 @@ class _MyAppState extends State<MyApp> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+
                         ]
                     );
                   },
