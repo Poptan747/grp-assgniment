@@ -70,7 +70,7 @@ class _MyAppState extends State<MyApp> {
             },
             icon: Icon(Icons.arrow_back_rounded)),
       ),
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           GFCarousel(
             autoPlay: true,
@@ -98,7 +98,7 @@ class _MyAppState extends State<MyApp> {
             child: Text(
               'Most Popular Restaurant >>>',
               style: TextStyle(
-                color: Colors.purple,
+                color: Color(0xfff55951),
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
@@ -145,7 +145,7 @@ class _MyAppState extends State<MyApp> {
 
               Padding(padding: EdgeInsets.only(left:15, bottom:5, right: 20, top:35),
                 child:Text('Others Restaurant >>>',
-                  style: TextStyle(color: Colors.purple, fontSize: 15, fontWeight: FontWeight.bold,
+                  style: TextStyle(color: Color(0xfff55951), fontSize: 15, fontWeight: FontWeight.bold,
 
             ),
           ),
